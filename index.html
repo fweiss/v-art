@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V-Art</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.2.0/aframe.min.js"></script>-->
+    <script src="main.js"></script>
+</head>
+<body>
+<a-scene shadow="type: pcfsoft" lazy-load>
+    <a-assets>
+        <img id="my-image" src="lotus-flower-828457262-5c6334b646e0fb0001dcd75a.jpg" size="2121 1414">
+        <img id="bonsai" src="pexels-j-6392043.jpg" size="2121 1414">
+        <img id="oceanview" src="pexels-asad-photo-maldives-457876.jpg" size="3712 2475">
+
+<!--        <img id="sky" src="johannes-krupinski-bHIX5NlVQ-k-unsplash.jpg"/>-->
+<!--        <img id="outdoors" src="sebastian-unrau-v4e3JI7DDHI-unsplash.jpg"/>-->
+
+<!--        <img id="calezaja" src="jose-g-ortega-castro-PYpkPbBCNFw-unsplash.jpg"/>-->
+<!--            <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2OInfvwPwAGEQLby8XskwAAAABJRU5ErkJggg=="/>-->
+        <!--        <img id="calezaja" src="1x1_5d9de1ff.png"/>-->
+<!--        <img id="calezaja" src="blank.jpg"/>-->
+        <img id="calezaja" src="skobbler-maps.png"/>
+<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
+<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
+<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
+<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
+<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
+<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
+
+    </a-assets>
+
+    <a-entity id="rig" position="0 0 0">
+        <a-camera id="camera" position="0 1.6 2" fov="50"></a-camera>
+    </a-entity>
+
+    <!-- taupe -->
+    <a-plane position="0 0 -4" rotation="-90 0 0" width="15" height="14" color="#928479" xgridhelper2="data: { size:10 }" shadow="receive: true">
+        <a-entity id="spot1Target"/>
+
+        <a-box position="-1 0.5 0" width="1.5" height="0.55" depth="1" rotation="0 0 45" color="#669999" shadow="cast: true"></a-box>
+        <a-entity position="1 0 0" rotation="90 0 0">
+            <a-sphere position="0 1.5 0" radius="0.45" xcolor="#EF2D5E" mirror></a-sphere>
+            <a-cylinder position="0 0.75 0" radius="0.07" height="1.5" color="#FFC65D"></a-cylinder>
+            <a-circle radius="0.45" position="0 0.1 0" rotation="-90 0 0"/>
+        </a-entity>
+     </a-plane>
+
+    <a-plane id="lightGrid" position="0 5 -4" rotation="90 0 0" width="15" height="14" color="#000">
+        <a-light type="spot" angle="30" intensity="0.8" target="#spot1Target" penumbra="0.5" light="castShadow: true"></a-light>
+    </a-plane>
+
+    <art-wall id="back" position="0 2 -8" rotation="0 0 0">
+        <art-work id="work3" src="#my-image" size="1" position="1 0.2 0"/>
+    </art-wall>
+    <art-wall id="left" position="-4 2 -4" rotation="0 90 0">
+        <art-work id="work2" src="#oceanview" size="1" position="1 0.2 0"/>
+    </art-wall>
+    <art-wall id="right" position="5 2 -4" rotation="0 -90 0">
+        <art-work id="work1" src="#bonsai" size="1" position="1 0.2 .7"/>
+    </art-wall>
+
+<!--    <a-sky color="#87cefa"></a-sky>-->
+
+    <!-- add default lights which were removed due to adding other lights -->
+    <a-entity light="type: ambient; color: #BBB"></a-entity>
+    <a-entity light="type: directional; color: #FFF; intensity: 0.2" position="-0.5 1 1"></a-entity>
+
+    <a-entity light="type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work1; shadowMapHeight: 2048; shadowMapWidth: 2048" position="3.211 5.170 -3.155"></a-entity>
+    <a-entity light="type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work2" position="3.211 5.170 -3.155"></a-entity>
+    <a-entity light="type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work3" position="3.211 5.170 -3.155"></a-entity>
+
+    <a-sky src="#calezaja"/>
+
+</a-scene>
+</body>
+</html>
