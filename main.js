@@ -86,6 +86,18 @@ AFRAME.registerComponent('work', {
         image.setAttribute('shadow', 'receive: true') // not needed
         this.el.object3D.position.setZ(offsetfromwall)
         this.el.appendChild(image)
+
+        const description = document.createElement('a-text')
+        description.value = "description"
+        this.el.appendChild(description)
+
+        const light = document.createElement('a-entity')
+        light.setAttribute('light', 'type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work2')
+        const lightGrid = document.getElementById('lightGrid')
+        lightGrid.appendChild(light)
+        light.setAttribute('position','3.211 5.170 -3.155')
+        //<!--    <a-entity light="type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work2" position="3.211 5.170 -3.155"></a-entity>-->
+
     }
 })
 AFRAME.registerPrimitive('art-work', {
@@ -180,13 +192,16 @@ AFRAME.registerComponent('mirror', {
 
 AFRAME.registerComponent('lazy-load', {
     init: function() {
-        console.log('tada')
-        // renderstart doesn't seem to wait
-        this.el.addEventListener('renderstart', () => {
-            console.log('start')
+        const sky = document.getElementById('sky')
+        const skyX = document.getElementById('sky-x')
+
+        // start loading the image
+        const skyImage = document.getElementById('calezaja')
+        skyImage.src = 'jose-g-ortega-castro-PYpkPbBCNFw-unsplash.jpg'
+        skyImage.addEventListener('load', () => {
+            // actual display is a bit after load event
+            // so don't start fade too early
+            setTimeout(() => { skyX.emit('fadeout') }, 150)
         })
-        const sky = document.getElementById('calezaja')
-        // sky.id = 'calezaja'
-        sky.src = 'jose-g-ortega-castro-PYpkPbBCNFw-unsplash.jpg'
-    }
+     }
 })
