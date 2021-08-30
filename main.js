@@ -6,9 +6,6 @@ AFRAME.registerComponent('gridhelper2', {
         colorGrid: {default: 'black'}
     },
 
-    /**
-     * Called once when component is attached. Generally for initial setup.
-     */
     init: function () {
         var plane = this.el.object3D;
         var data = this.data;
@@ -81,7 +78,7 @@ AFRAME.registerComponent('work', {
         const offsetfromwall = 0.05
         const image = document.createElement('a-image')
         image.setAttribute('src', this.data.src)
-        image.setAttribute('width', 1.3)
+        image.setAttribute('width', 1.3) // fixme aspect ratio or scale from img
         image.setAttribute('height', 1)
         image.setAttribute('shadow', 'receive: true') // not needed
         this.el.object3D.position.setZ(offsetfromwall)
@@ -95,8 +92,16 @@ AFRAME.registerComponent('work', {
         light.setAttribute('light', 'type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work2')
         const lightGrid = document.getElementById('lightGrid')
         lightGrid.appendChild(light)
-        light.setAttribute('position','3.211 5.170 -3.155')
+        // light.setAttribute('position','3.211 5.170 -3.155')
+
+        light.object3D.position.set(3.211, 5.170, -3.155)
+        // this.el.sceneEl.object3D.add(this.el.object3D)
+        const t = this.el.object3D.position
+        // light.object3D.target.position.set(t.x, t.y, t.z)
         //<!--    <a-entity light="type: spot; castShadow: true; angle: 15; color: #FFF; intensity: 0.6; penumbra: 0.8; target: #work2" position="3.211 5.170 -3.155"></a-entity>-->
+
+    },
+    tick: function() {
 
     }
 })

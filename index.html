@@ -12,29 +12,23 @@
 <a-scene shadow="type: pcfsoft" lazy-load>
     <a-assets>
         <img id="my-image" src="lotus-flower-828457262-5c6334b646e0fb0001dcd75a.jpg" size="2121 1414">
-        <img id="bonsai" src="pexels-j-6392043.jpg" size="2121 1414">
+<!--        <img id="bonsai" src="pexels-j-6392043.jpg" size="2121 1414">-->
         <img id="oceanview" src="pexels-asad-photo-maldives-457876.jpg" size="3712 2475">
+        <img id="abstract" src="pastels-on-fabriano-paper-1186601.jpg" size="1600 1200">
 
-<!--        <img id="sky" src="johannes-krupinski-bHIX5NlVQ-k-unsplash.jpg"/>-->
 <!--        <img id="outdoors" src="sebastian-unrau-v4e3JI7DDHI-unsplash.jpg"/>-->
 
 <!--        <img id="calezaja" src="jose-g-ortega-castro-PYpkPbBCNFw-unsplash.jpg"/>-->
 <!--            <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2OInfvwPwAGEQLby8XskwAAAABJRU5ErkJggg=="/>-->
-        <!--        <img id="calezaja" src="1x1_5d9de1ff.png"/>-->
         <img id="calezaja" src="blank.jpg"/>
-<!--        <img id="calezaja" src="skobbler-maps.png"/>-->
-<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
-<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
-<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
-<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
-<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
-<!--        <img id="calezaja" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2MomPvwPwAGXQLuBzkTigAAAABJRU5ErkJggg=="/>-->
-
     </a-assets>
 
-<!--    <a-entity id="rig" position="0 0 0">-->
-        <a-camera id="camera" position="0 1.6 2" fov="50"></a-camera>
-<!--    </a-entity>-->
+    <!-- try OrthographicCamera? -->
+    <a-entity id="rig" position="0 1.6 2">
+        <a-camera id="camera" position="0 0 1" fov="25">
+
+        </a-camera>
+    </a-entity>
 
     <!-- taupe -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="15" height="14" color="#928479" xgridhelper2="data: { size:10 }" shadow="receive: true">
@@ -48,10 +42,13 @@
         </a-entity>
      </a-plane>
 
-    <a-box height="10" width="12" depth="12" position="0 -5.001 -5"></a-box>
+    <a-box id="tower" height="10" width="12" depth="12" position="0 -5.001 -5"></a-box>
 
     <a-plane id="lightGrid" position="0 5 -4" rotation="90 0 0" width="15" height="14" color="#000">
-        <a-light type="spot" angle="30" intensity="0.8" target="#spot1Target" penumbra="0.5" light="castShadow: true"></a-light>
+        <a-entity>
+            <a-light type="spot" angle="30" intensity="0.8" target="#spot1Target" penumbra="0.5" light="castShadow: true"></a-light>
+            <a-circle radius="0.05" position="0 0 .01"></a-circle>
+        </a-entity>
     </a-plane>
 
     <art-wall id="back" position="0 2 -8" rotation="0 0 0">
@@ -62,7 +59,8 @@
         <art-work id="work2" src="#oceanview" size="1" position="1 0.2 0"/>
     </art-wall>
     <art-wall id="right" position="5 2 -4" rotation="0 -90 0">
-        <art-work id="work1" src="#bonsai" size="1" position="1 0.2 .7"/>
+        <art-work id="work1" src="#abstract" size="1" position="1 0.2 .7"/>
+        <a-text value="Photo by Alfonso Diaz">
     </art-wall>
 
     <!-- add default lights which were removed due to adding other lights -->
@@ -75,7 +73,7 @@
 
     <a-sky id="sky" radius="100" src="#calezaja" opacity="1"></a-sky>
     <a-sky id="sky-x" radius="99" color="#5d9de1" opacity="1"
-           animation__fadeout="startEvents: fadeout; property: material.opacity; from: 1; to: 0; dur: 5000; easing: easeOutQuad"></a-sky>
+           animation__fadeout="startEvents: fadeout; property: material.opacity; from: 1; to: 0; dur: 1000; easing: easeOutQuad"></a-sky>
 
 </a-scene>
 </body>
