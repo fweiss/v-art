@@ -1,5 +1,11 @@
 # V-ART
-Exploring a virtual experience ar gallery.
+Exploring a virtual experience art gallery.
+
+## Running
+uses webpack
+
+``npx webpack serve``
+
 
 ## Mirrors
 https://threejs.org/examples/webgl_mirror.html

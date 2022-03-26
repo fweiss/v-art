@@ -202,7 +202,7 @@ AFRAME.registerComponent('lazy-load', {
 
         // start loading the image
         const skyImage = document.getElementById('calezaja')
-        skyImage.src = 'jose-g-ortega-castro-PYpkPbBCNFw-unsplash.jpg'
+        skyImage.src = 'assets/jose-g-ortega-castro-PYpkPbBCNFw-unsplash.jpg'
         skyImage.addEventListener('load', () => {
             // actual display is a bit after load event
             // so don't start fade too early
